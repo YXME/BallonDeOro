@@ -5,7 +5,7 @@ pragma solidity ^0.6.12;
 import "./Ownable.sol";
 import "./SafeMath.sol";
 
-contract BallondOr is Ownable {
+contract BallonDeOro is Ownable {
 
 using SafeMath for uint256;
 
@@ -125,7 +125,7 @@ using SafeMath for uint256;
         require(selectionned[_firstChoice].id != 0 && selectionned[_secondChoice].id != 0 && selectionned[_thirdChoice].id != 0 
         && selectionned[_fourthChoice].id != 0 && selectionned[_fifthChoice].id != 0, "One or more of these address are not found.");
 
-        selectionned[_firstChoice].voteCount += 5;
+        selectionned[_firstChoice].voteCount += 6;
         selectionned[_secondChoice].voteCount += 4;
         selectionned[_thirdChoice].voteCount += 3;
         selectionned[_fourthChoice].voteCount += 2;
@@ -136,7 +136,8 @@ using SafeMath for uint256;
         voters[msg.sender].VoteContent.push(_thirdChoice);
         voters[msg.sender].VoteContent.push(_fourthChoice);
         voters[msg.sender].VoteContent.push(_fifthChoice);
-
+        
+        voters[msg.sender].hasVoted = true;
         // trigger voted event
         emit votedEvent (msg.sender, "Votre vote a été pris en compte");
     }
