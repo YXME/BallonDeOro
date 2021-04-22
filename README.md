@@ -1,1 +1,3 @@
 # BallonDeOro
+
+Blockchain school project
